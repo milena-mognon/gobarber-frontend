@@ -66,4 +66,8 @@ export const Container = styled.div<ContainerProps>`
     -webkit-box-shadow: 0 0 0 30px #232129 inset !important;
     -webkit-text-fill-color: #f4ede8 !important;
   }
+
+  span {
+    font-size: 14px;
+  }
 `;

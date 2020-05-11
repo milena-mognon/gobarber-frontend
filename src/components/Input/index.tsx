@@ -55,12 +55,14 @@ const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
     <Container isFilled={isFilled} isFocused={isFocused}>
       {Icon && <Icon size={20} />}
       <input
+        autoComplete="new-off"
         onFocus={handleInputFocused} // recebeu foco
         onBlur={handleInputBlur} // perdeu foco
         defaultValue={defaultValue}
         ref={inputRef}
         {...rest}
       />
+      <span>{error}</span>
     </Container>
   );
 };
