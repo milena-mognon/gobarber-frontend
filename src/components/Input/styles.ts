@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import Tooltip from '../Tooltip';
 
 /**
  * É necessário criar uma interface porque por padrão a div não possui
@@ -9,6 +10,7 @@ import styled, { css } from 'styled-components';
 interface ContainerProps {
   isFocused: boolean;
   isFilled: boolean;
+  hasError: boolean;
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -22,6 +24,12 @@ export const Container = styled.div<ContainerProps>`
    */
   border: 2px solid #232129;
   color: #666360;
+
+  ${props =>
+    props.hasError &&
+    css`
+      border-color: #c53030;
+    `}
 
   ${props =>
     props.isFocused &&
@@ -66,8 +74,22 @@ export const Container = styled.div<ContainerProps>`
     -webkit-box-shadow: 0 0 0 30px #232129 inset !important;
     -webkit-text-fill-color: #f4ede8 !important;
   }
+`;
+
+export const Error = styled(Tooltip)`
+  height: 20px;
+  margin-left: 16px;
+
+  svg {
+    margin: 0;
+  }
 
   span {
-    font-size: 14px;
+    background: #c53030;
+    color: #fff;
+
+    &::before {
+      border-color: #c53030 transparent;
+    }
   }
 `;

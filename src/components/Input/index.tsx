@@ -10,7 +10,9 @@ import { useField } from '@unform/core';
 // propreidades do icone
 
 import { IconBaseProps } from 'react-icons';
-import { Container } from './styles';
+import { FiAlertCircle } from 'react-icons/fi';
+import { Container, Error } from './styles';
+
 /**
  * Interface recebe todas as propriedades de um input
  */
@@ -52,7 +54,7 @@ const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
   }, []);
 
   return (
-    <Container isFilled={isFilled} isFocused={isFocused}>
+    <Container hasError={!!error} isFilled={isFilled} isFocused={isFocused}>
       {Icon && <Icon size={20} />}
       <input
         autoComplete="new-off"
@@ -62,7 +64,13 @@ const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
         ref={inputRef}
         {...rest}
       />
-      <span>{error}</span>
+      {/* <span> */}
+      {error && (
+        <Error title={error}>
+          <FiAlertCircle color="#c53030" size={20} />
+        </Error>
+      )}
+      {/* </span> */}
     </Container>
   );
 };
